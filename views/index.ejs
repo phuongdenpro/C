@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn giữa kì</title>
+</head>
+
+<body>
+    <div class="content"">
+        <form id=" create" action="/" method="post" enctype="multipart/form-data">
+        <input type="number" name="ma_baibao" placeholder="Nhập mã bài báo">
+        <input type="text" name="ten_baibao" placeholder="Nhập tên bài báo">
+        <input type="text" name="ten_nhomtacgia" placeholder="Tên nhóm tác giả">
+        <input type="text" name="chiso_isbn" placeholder="Chỉ số ISBN">
+        <input type="number" name="sotrang" placeholder="Số trang">
+        <input type="number" name="namxuatban" placeholder="Năm xuất bản">
+        <input type="submit" value="Thêm bài báo mới">
+        </form>
+
+        <h1>Danh sách bài báo</h1>
+        <table border="1" style="text-align: center;">
+            <tr>
+                <th>STT</th>
+                <th>Mã bài báo</th>
+                <th>Tên bài báo</th>
+                <th>Tên nhóm tác giả</th>
+                <th>Chỉ số ISBN</th>
+                <th>Số trang</th>
+                <th>Năm xuất bản</th>
+                <th>Hành động</th>
+            </tr>
+
+            <% for (let i=0; i < DanhSachBaiBao.length; i++) { %>
+                <tr>
+                    <td>
+                        <%=(i+1)%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].ma_baibao%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].ten_baibao%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].ten_nhomtacgia%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].chiso_isbn%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].sotrang%>
+                    </td>
+                    <td>
+                        <%=DanhSachBaiBao[i].namxuatban%>
+                    </td>
+                    <td>
+                        <form id="delete" method="post" action="/delete" enctype="multipart/form-data">
+                            <input type="hidden" name="ma_baibao" id="ma_baibao"
+                                value="<%= DanhSachBaiBao[i].ma_baibao %>">
+                            <input type="submit" value="Xóa">
+                        </form>
+                    </td>
+                </tr>
+                <br>
+                <% } %>
+        </table>
+        </form>
+
+</body>
+
+</html>
